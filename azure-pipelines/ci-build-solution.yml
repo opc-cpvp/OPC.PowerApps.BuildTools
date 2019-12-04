@@ -24,7 +24,8 @@ steps:
 - task: ms-devlabs.vsts-developer-tools-build-tasks.package-extension-build-task.PackageAzureDevOpsExtension@2
   displayName: 'Package Extension: OPC.PowerApps.BuildTools'
   inputs:
-    patternManifest: '**\extensionManifest.json'
+    rootFolder: 'src/OPC.PowerApps.BuildTools'
+    patternManifest: 'extensionManifest.json'
     extensionVersion: '$(Build.BuildNumber)'
     updateTasksVersion: true
     extensionVisibility: private
