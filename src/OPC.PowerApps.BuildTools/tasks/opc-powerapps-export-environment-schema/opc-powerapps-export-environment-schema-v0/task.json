@@ -1,0 +1,69 @@
+{
+  "id": "E874E99F-4B5C-4C2B-8322-163941014AA8",
+  "name": "PowerAppsExportEnvironmentSchema",
+  "friendlyName": "OPC - PowerApps Export Environment Schema",
+  "description": "OPC - PowerApps Export Environment Schema",
+  "author": "Office of the Privacy Commissioner of Canada",
+  "helpMarkDown": "[More Info](https://aka.ms/buildtoolsdoc)",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [
+    "PowerAppsTool"
+  ],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "3"
+  },
+  "preview": true,
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "OPC - PowerApps Export Environment Schema $(message)",
+  "inputs": [
+    {
+      "name": "PowerAppsAdminCredentials",
+      "label": "PowerApps Admin Credentials",
+      "type": "connectedService:Generic",
+      "required": true,
+      "helpMarkDown": "Select the service endpoint with your PowerApps admin credentials."
+    },
+    {
+      "name": "EnvironmentUrl",
+      "label": "Environment URL",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "The URL of the environment for which you wish to extract the schema from."
+    },
+    {
+      "name": "ConfigurationPath",
+      "type": "filePath",
+      "label": "Configuration Path",
+      "defaultValue": "",
+      "required": false,
+      "helpMarkDown": "Path to the configuration file used to define the schema."
+    },
+    {
+      "name": "SchemaOutputPath",
+      "type": "filePath",
+      "label": "Schema Output Directory Path",
+      "defaultValue": "$(Build.ArtifactStagingDirectory)",
+      "required": true,
+      "helpMarkDown": "Output directory path for the schema."
+    },
+    {
+      "name": "SchemaFileName",
+      "label": "Schema File Name",
+      "defaultValue": "schema.xml",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "The name of the schema output file."
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "ExportEnvironmentSchema.ps1"
+    }
+  }
+}

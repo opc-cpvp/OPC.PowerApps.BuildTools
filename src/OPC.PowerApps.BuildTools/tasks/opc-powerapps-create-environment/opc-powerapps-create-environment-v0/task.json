@@ -1,0 +1,168 @@
+{
+  "id": "AC4B5DDC-9644-4928-8ACC-3249030C0601",
+  "name": "PowerAppsCreateEnvironment",
+  "friendlyName": "OPC - PowerApps Create Environment",
+  "description": "OPC - PowerApps Create Environment",
+  "author": "Office of the Privacy Commissioner of Canada",
+  "helpMarkDown": "[More Info](https://aka.ms/buildtoolsdoc)",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [
+    "PowerAppsTool"
+  ],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "3"
+  },
+  "preview": true,
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "OPC - PowerApps Create Environment $(message)",
+  "groups": [
+      {
+        "name": "templates",
+        "displayName": "Templates",
+        "isExpanded": true
+      }
+  ],
+  "inputs": [
+    {
+      "name": "PowerAppsAdminCredentials",
+      "label": "PowerApps Admin Credentials",
+      "type": "connectedService:Generic",
+      "required": true,
+      "helpMarkDown": "Select the service endpoint with your PowerApps admin credentials."
+    },
+    {
+      "name": "LocationName",
+      "label": "Location Name",
+      "type": "pickList",
+      "required": true,
+      "defaultValue": "canada",
+      "helpMarkDown": "Select the deployment region.",
+      "options": {
+        "unitedstates": "United States",
+        "europe": "Europe",
+        "asia": "Asia",
+        "australia": "Australia",
+        "india": "India",
+        "japan": "Japan",
+        "canada": "Canada",
+        "unitedkingdom": "United Kingdom",
+        "unitedstatesfirstrelease": "Preview (United States)",
+        "southamerica": "South America",
+        "france": "France"
+      }
+    },
+    {
+      "name": "EnvironmentSku",
+      "label": "Environment Sku",
+      "type": "pickList",
+      "required": true,
+      "defaultValue": "Production",
+      "helpMarkDown": "Select the instance type.",
+      "options": {
+        "Trial": "Trial",
+        "Production": "Production"
+      }
+    },
+    {
+      "name": "DomainName",
+      "label": "Domain Name",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "Set the domain name of the environment."
+    },
+    {
+      "name": "DisplayName",
+      "label": "Display Name",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "Set the display name of the environment."
+    },
+    {
+      "name": "LanguageName",
+      "label": "Language Name",
+      "type": "pickList",
+      "required": true,
+      "defaultValue": "1033",
+      "helpMarkDown": "Select the base language.",
+      "options": {
+        "1033": "English"
+      }
+    },
+    {
+      "name": "sales",
+      "type": "boolean",
+      "label": "Sales",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "templates"
+    },
+    {
+      "name": "customerService",
+      "type": "boolean",
+      "label": "Customer Service",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "templates"
+    },
+    {
+      "name": "fieldService",
+      "type": "boolean",
+      "label": "Field Service",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "templates"
+    },
+    {
+      "name": "projectServiceAutomation",
+      "type": "boolean",
+      "label": "Project Service Automation",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "templates"
+    },
+    {
+      "name": "sampleApp",
+      "type": "boolean",
+      "label": "Sample App",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "templates"
+    },
+    {
+      "name": "developerEdition",
+      "type": "boolean",
+      "label": "Developer Edition",
+      "defaultValue": "false",
+      "required": false,
+      "helpMarkDown": "As per documentation: https://docs.microsoft.com/en-us/rest/api/admin.services.crm.dynamics.com/provisioninstance",
+      "groupName": "templates"
+    },
+    {
+      "name": "CurrencyName",
+      "label": "Currency Name",
+      "type": "pickList",
+      "required": true,
+      "defaultValue": "CAD",
+      "helpMarkDown": "Select the currency.",
+      "options": {
+        "CAD": "Canadian Dollar"
+      }
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "CreateEnvironment.ps1"
+    }
+  }
+}

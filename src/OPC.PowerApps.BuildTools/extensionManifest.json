@@ -1,0 +1,68 @@
+{
+  "manifestVersion": 1,
+  "id": "opc-powerapps-buildtools",
+  "name": "OPC PowerApps BuildTools",
+  "version": "1.0.0",
+  "publisher": "opc-cpvp",
+  "targets": [
+    {
+      "id": "Microsoft.VisualStudio.Services"
+    }
+  ],
+  "description": "Tools for building/releasing with PowerApps.",
+  "categories": [
+    "Azure Pipelines"
+  ],
+  "icons": {
+    "default": "images/extensionIcon.png"
+  },
+  "files": [
+    {
+      "path": "tasks"
+    }
+  ],
+  "contributions": [
+    {
+      "id": "opc-powerapps-tool-installer",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/opc-powerapps-tool-installer"
+      }
+    },
+    {
+      "id": "opc-powerapps-create-environment",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/opc-powerapps-create-environment"
+      }
+    },
+    {
+      "id": "opc-powerapps-copy-environment",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/opc-powerapps-copy-environment"
+      }
+    },
+    {
+      "id": "opc-powerapps-export-environment-schema",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/opc-powerapps-export-environment-schema"
+      }
+    }
+  ],
+  "scopes": [],
+  "contributionTypes": []
+}

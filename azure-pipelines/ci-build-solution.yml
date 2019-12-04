@@ -1,0 +1,43 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pr: none
+
+pool:
+  vmImage: 'vs2017-win2016'
+
+variables:
+  Version.MajorMinor: '1.0'
+  Version.Patch: $[counter(variables['Version.MajorMinor'], 0)]
+  
+name: $(Version.MajorMinor).$(Version.Patch)
+
+steps:
+- task: ms-devlabs.vsts-developer-tools-build-tasks.tfx-installer-build-task.TfxInstaller@2
+  displayName: 'Use Node CLI for Azure DevOps (tfx-cli): v0.6.x'
+
+- task: ms-devlabs.vsts-developer-tools-build-tasks.package-extension-build-task.PackageAzureDevOpsExtension@2
+  displayName: 'Package Extension: OPC.PowerApps.BuildTools'
+  inputs:
+    patternManifest: '**\extensionManifest.json'
+    extensionVersion: '$(Build.BuildNumber)'
+    updateTasksVersion: true
+    extensionVisibility: private
+    extensionPricing: free
+
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: '**\*.vsix'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: drop'
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
