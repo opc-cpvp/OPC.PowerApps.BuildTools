@@ -61,6 +61,16 @@
       "properties": {
         "name": "tasks/opc-powerapps-export-environment-schema"
       }
+    },
+    {
+      "id": "opc-powerapps-export-environment-data",
+      "type": "ms.vss-distributed-task.task",
+      "targets": [
+        "ms.vss-distributed-task.tasks"
+      ],
+      "properties": {
+        "name": "tasks/opc-powerapps-export-environment-data"
+      }
     }
   ],
   "scopes": [],
