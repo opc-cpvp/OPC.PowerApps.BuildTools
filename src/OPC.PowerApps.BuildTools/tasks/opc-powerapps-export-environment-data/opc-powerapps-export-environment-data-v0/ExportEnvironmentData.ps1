@@ -17,7 +17,7 @@ function Invoke-ExportEnvironmentData {
     }
 
     process {     
-        $output = Get-EnvironmentSchema -EnvironmentURL $EnvironmentURL -Credentials $PSCredential -Verbose @Parameters
+        $output = Get-EnvironmentData -EnvironmentURL $EnvironmentURL -Credentials $PSCredential -Verbose @Parameters
     }
 
     end {
