@@ -1,0 +1,69 @@
+{
+  "id": "D0E7E4C6-8720-43C6-AEF4-620A2E98B5D1",
+  "name": "PowerAppsExportEnvironmentData",
+  "friendlyName": "OPC - PowerApps Export Environment Data",
+  "description": "OPC - PowerApps Export Environment Data",
+  "author": "Office of the Privacy Commissioner of Canada",
+  "helpMarkDown": "[More Info](https://aka.ms/buildtoolsdoc)",
+  "category": "Utility",
+  "visibility": [
+    "Build",
+    "Release"
+  ],
+  "demands": [
+    "PowerAppsTool"
+  ],
+  "version": {
+    "Major": "0",
+    "Minor": "1",
+    "Patch": "3"
+  },
+  "preview": true,
+  "minimumAgentVersion": "1.95.0",
+  "instanceNameFormat": "OPC - PowerApps Export Environment Data $(message)",
+  "inputs": [
+    {
+      "name": "PowerAppsAdminCredentials",
+      "label": "PowerApps Admin Credentials",
+      "type": "connectedService:Generic",
+      "required": true,
+      "helpMarkDown": "Select the service endpoint with your PowerApps admin credentials."
+    },
+    {
+      "name": "EnvironmentUrl",
+      "label": "Environment URL",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "The URL of the environment for which you wish to extract the data from."
+    },
+    {
+      "name": "SchemaPath",
+      "type": "filePath",
+      "label": "Schema Path",
+      "defaultValue": "",
+      "required": true,
+      "helpMarkDown": "Path to the schema file."
+    },
+    {
+      "name": "DataOutputPath",
+      "type": "filePath",
+      "label": "Data Output Directory Path",
+      "defaultValue": "$(Build.ArtifactStagingDirectory)",
+      "required": true,
+      "helpMarkDown": "Output directory path for the data."
+    },
+    {
+      "name": "DataFileName",
+      "label": "Data File Name",
+      "defaultValue": "data.zip",
+      "type": "string",
+      "required": true,
+      "helpMarkDown": "The name of the data output file."
+    }
+  ],
+  "execution": {
+    "PowerShell3": {
+      "target": "ExportEnvironmentData.ps1"
+    }
+  }
+}

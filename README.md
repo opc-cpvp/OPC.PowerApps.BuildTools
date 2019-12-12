@@ -45,6 +45,10 @@ The Copy Environment task creates a copy (including configuration) of an existin
 
 The Export Environment Schema task exports a schema definition for a given environment. 
 
+### OPC - PowerApps Export Environment Schema
+
+The Export Environment Data task exports data for a given environment. 
+
 ## Built With
 
 * [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/overview)
