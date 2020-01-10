@@ -68,7 +68,7 @@
       "type": "string",
       "required": true,
       "helpMarkDown": "Specify the version of OPC PowerApps Data Migration to install",
-      "defaultValue": "1.0.638"
+      "defaultValue": "1.0.649"
     },
     {
         "name": "powershellServiceConnections",
