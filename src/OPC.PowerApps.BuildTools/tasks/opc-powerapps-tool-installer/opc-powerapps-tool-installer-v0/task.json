@@ -44,7 +44,7 @@
       "type": "string",
       "required": true,
       "helpMarkDown": "Specify the version of PowerApps Administration to install",
-      "defaultValue": "2.0.21"
+      "defaultValue": "2.0.37"
     },
     {
       "name": "PowerAppsVersion",
